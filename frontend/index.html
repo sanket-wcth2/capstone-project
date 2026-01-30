@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>AI Math Solver (Class 11–12)</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>AI Math Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
+
 <body>
 
-<div class="container">
-    <h1>📘 AI Math Solver</h1>
-    <p class="subtitle">Class 11 & 12 • CBSE & HSC</p>
+    <div class="container center">
+        <h1>📘 AI Math Solver</h1>
+        <p>Select your class</p>
 
-    <textarea
-        id="question"
-        placeholder="Enter your maths question here..."
-    ></textarea>
+        <div class="class-buttons">
+            <a href="class11.html" class="class-btn">Class 11</a>
+            <a href="class12.html" class="class-btn">Class 12</a>
+        </div>
+    </div>
 
-    <button onclick="solveMath()">Solve</button>
-
-    <div id="topic-badge" class="topic-badge" style="display:none;"></div>
-    <div id="output" class="output"></div>
-</div>
-
-<script src="script.js"></script>
 </body>
+
 </html>

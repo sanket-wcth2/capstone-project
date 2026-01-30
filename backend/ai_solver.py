@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 from topic_detector import detect_topic
 from prompts import get_prompt
-from syllabus import is_supported
+from syllabus import is_supported_for_class
 
 load_dotenv()
 
@@ -12,12 +12,13 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL = "mistralai/mistral-7b-instruct"
 
 
-def solve_math(question: str) -> str:
+def solve_math(question: str, student_class: int) -> str:
+    # ---------- CLASS-WISE SYLLABUS CHECK ----------
+    if not is_supported_for_class(question, student_class):
+        return f"This question is outside the Class {student_class} syllabus."
+
     if not OPENROUTER_API_KEY:
         return "Error: OpenRouter API key not found."
-
-    if not is_supported(question):
-        return "This question is outside the supported syllabus."
 
     topic = detect_topic(question)
     prompt = get_prompt(topic, question)

@@ -85,3 +85,47 @@ button:hover {
     color: #60a5fa;
     border: 1px solid #334155;
 }
+.center {
+    text-align: center;
+}
+
+.class-buttons {
+    margin-top: 20px;
+}
+
+.class-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 30px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.class-btn:hover {
+    background: #1d4ed8;
+}
+.solution-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.solution-steps {
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.solution-final {
+    margin-top: 15px;
+    padding: 12px;
+    background: #0f172a;
+    border-radius: 8px;
+    color: #22c55e;
+    font-size: 18px;
+    text-align: center;
+}
+    

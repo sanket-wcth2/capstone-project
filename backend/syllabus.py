@@ -1,45 +1,32 @@
-CLASS_11_TOPICS = [
-    "sets", "functions", "trigonometry", "complex",
-    "quadratic", "permutation", "combination",
+CLASS_11_KEYWORDS = [
+    "sets", "function", "trigonometry", "sin", "cos", "tan",
+    "complex", "quadratic",
+    "permutation", "combination",
     "binomial", "sequence", "series",
     "straight line", "conic",
-    "limit", "derivative", "probability", "statistics"
+    "limit", "derivative", "differentiate",
+    "probability", "statistics"
 ]
 
-CLASS_12_TOPICS = [
-    "relation", "function", "inverse trigonometric",
+CLASS_12_KEYWORDS = [
+    "relation", "function", "inverse",
     "continuity", "differentiability",
-    "application of derivative",
-    "integration", "integral",
+    "integration", "integral", "integrate", "dx",
     "differential equation",
     "vector", "3d", "three dimensional",
+    "matrix", "determinant", "inverse matrix",
     "linear programming",
     "probability"
 ]
 
-# 🔹 ACTION / OPERATION KEYWORDS (VERY IMPORTANT)
-ACTION_KEYWORDS = [
-    # Calculus actions
-    "integrate", "integration", "integral", "dx",
-    "differentiate", "derivative", "dy/dx",
-    "limit",
 
-    # Matrices & determinants
-    "matrix", "matrices", "determinant", "inverse",
-
-    # Vectors
-    "vector", "magnitude",
-
-    # Trigonometry usage
-    "sin", "cos", "tan", "prove",
-
-    # Algebra indicators
-    "x^", "x²", "x**"
-]
-
-ALL_KEYWORDS = CLASS_11_TOPICS + CLASS_12_TOPICS + ACTION_KEYWORDS
-
-
-def is_supported(question: str) -> bool:
+def is_supported_for_class(question: str, student_class: int) -> bool:
     q = question.lower()
-    return any(keyword in q for keyword in ALL_KEYWORDS)
+
+    if student_class == 11:
+        return any(k in q for k in CLASS_11_KEYWORDS)
+
+    if student_class == 12:
+        return any(k in q for k in CLASS_12_KEYWORDS)
+
+    return False

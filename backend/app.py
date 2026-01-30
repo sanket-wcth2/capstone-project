@@ -6,27 +6,27 @@ from ai_solver import solve_math
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
-# ✅ ENABLE CORS FOR FRONTEND
-CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/solve", methods=["POST"])
 def solve():
-    try:
-        data = request.get_json()
-        question = data.get("question", "").strip()
+    data = request.get_json()
 
-        if not question:
-            return jsonify({"error": "Question is required"}), 400
+    question = data.get("question", "").strip()
+    student_class = data.get("class")
 
-        solution = solve_math(question)
+    if not question:
+        return jsonify({"error": "Question is required"}), 400
 
-        return jsonify({"solution": solution})
+    if not student_class:
+        return jsonify({"error": "Class not specified"}), 400
 
-    except Exception as e:
-        # 🔴 This helps us see real backend errors
-        print("ERROR:", e)
-        return jsonify({"error": "Internal server error"}), 500
+    solution = solve_math(question, student_class)
+
+    return jsonify({
+        "solution": solution
+    })
 
 
 if __name__ == "__main__":
